@@ -52,11 +52,11 @@
         <input type="hidden" name="txtid" value="<?php echo $sl['id_sanpham']?>">
         <select class="form-control" name="txtdanhmuc">
             <option value="Banhtrang" <?php if (trim($sl['danhmuc']) == 'Bánh tráng') echo 'selected'; ?>>Bánh tráng</option>
-            <option value="Salad-Rau" <?php if (trim($sl['danhmuc']) == 'Salad-Rau') echo 'selected'; ?>>Salad-Rau</option>
+            <option value="Salad" <?php if (trim($sl['danhmuc']) == 'Salad-Rau') echo 'selected'; ?>>Salad-Rau</option>
             <option value="Monannhe" <?php if (trim($sl['danhmuc']) == 'Món ăn nhẹ') echo 'selected'; ?>>Món ăn nhẹ</option>
             <option value="Mongachimlon" <?php if (trim($sl['danhmuc']) == 'Món gà-chim-lợn') echo 'selected'; ?>>Món gà-chim-lợn</option>
             <option value="Monca" <?php if (trim($sl['danhmuc']) == 'Món cá') echo 'selected'; ?>>Món cá</option>
-            <option value="Douong_trangmieng" <?php if (trim($sl['danhmuc']) == 'Đồ uống - Tráng miệng') echo 'selected'; ?>>Đồ uống - Tráng miệng</option>
+            <option value="Trangmieng" <?php if (trim($sl['danhmuc']) == 'Đồ uống - Tráng miệng') echo 'selected'; ?>>Đồ uống - Tráng miệng</option>
         </select>
     </div>
     <div class="mb-3 mt-3">

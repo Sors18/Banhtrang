@@ -43,11 +43,11 @@
         <label for="tensp" class="form-label">Danh Mục sản phẩm</label>
         <select class="form-control" name="txtdanhmuc"  >
             <option value="Banhtrang">Bánh tráng </option>
-            <option value="Salad-Rau">Salad-Rau </option>
+            <option value="Salad">Salad-Rau </option>
             <option value="Monannhe">Món ăn nhẹ </option>
             <option value="Mongachimlon">Món gà-chim-lợn </option>
             <option value="Monca">Món cá </option>
-            <option value="Douong_trangmieng">Đồ uống - Tráng miệng </option>
+            <option value="Trangmieng">Đồ uống - Tráng miệng </option>
         </select>
     </div>
     <div class="mb-3 mt-3">

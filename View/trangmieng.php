@@ -1,3 +1,9 @@
+<?php
+include "../Model/sanpham.php"; // Import lớp sanpham
+
+$sanpham = new sanpham(); // Tạo đối tượng lớp sanpham
+$result = $sanpham->select_danhmuc("Trangmieng"); // Truy vấn sản phẩm theo danh mục "banhtrang"
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +22,8 @@
   </style>
 </head>
 <body>
-
+  
+    
     <?php include('navbar.php'); ?>
   </div>
       <div class="container">
@@ -44,99 +51,36 @@
                                 <a href="#" style="color: #722c29; text-decoration: none; font-size: 23px; font-weight: 500;">Đồ uống-Tráng miệng</a>
                             </li>
                         </ul>
-                        <div style="width: 275px;height: 40px; background-color: #681c1c; color: white; font-size: 25px; text-align: center; font-weight: bold;">Xem gần đây</div>
-                        <div>
-                            <div class="row">
-                                <div class="col-4">
-                                    <img src="Media/banhtrangcuonboto.jpg" style="width: 70px; height: 70px; margin-top: 10px;">
-                                </div>
-                                <div class="col-8">
-                                    <div style="margin-top: 5px; color: #722c29; font-size: 20px; font-weight: bold;">Bánh tráng cuốn Bò tơ</div>
-                                    <div style="font-weight: bold;">165.000 ₫ – 170.000 ₫</div>
-                                </div>
-                            </div>
-                            
-                        </div>
+                       
                 </div>
             </div>
             <div class="col-9">
-                <div style="color: #bd784e; font-size: 40px; font-weight: 500; text-align: center; margin-top: 30px; margin-bottom: 10px;">Đồ Uống - Tráng Miệng</div>
+                <div style="color: #bd784e; font-size: 40px; font-weight: 500; text-align: center; margin-top: 50px; margin-bottom: 10px;">Đồ uống-Tráng miệng</div>
                 <div class="container">
                     <div class="row">
-                        <div class="col-4" style="overflow: hidden;">
-                            <div class="image-container2">
-                              <img src="Media/trangmieng1.jpg" class="zoom">
-                            </div>
-                            <div style="text-align: center; margin-top: 10px; color: #a17a6d;">Đồ Uống - Tráng Miệng</div>
-                            <div style="color: #bd784e; font-size: 19px; font-weight: bolder; text-align: center;" >Nước cam ép</div>
-                            <div style="text-align: center; color: #33524b ; font-size: 19px; font-weight: bolder;">45.000 ₫</div>
-                            <center>
-                                <button style="width: 100px; height: 30px; background-color: #601d1b; color: white; font-size: 18px; font-weight: bold; border: none;">Đặt món</button>
-                                <button style="width: 100px; height: 30px; background-color: #33522d; color: white; font-size: 18px; font-weight: bold; border: none;">Chi tiết</button>
-                            </center>
-                        </div>
-                        <div class="col-4" style="overflow: hidden;">
-                            <div class="image-container2">
-                                <img src="Media/trangmieng2.jpg" class="zoom">
-                              </div>
-                              <div style="text-align: center; margin-top: 10px; color: #a17a6d;">Đồ Uống - Tráng Miệng</div>
-                              <div style="color: #bd784e; font-size: 19px; font-weight: bolder; text-align: center;" >Nước chanh tươi</div>
-                              <div style="text-align: center; color: #33524b ; font-size: 19px; font-weight: bolder;">30.000 ₫</div>
-                              <center>
-                                  <button style="width: 100px; height: 30px; background-color: #601d1b; color: white; font-size: 18px; font-weight: bold; border: none;">Đặt món</button>
-                                  <button style="width: 100px; height: 30px; background-color: #33522d; color: white; font-size: 18px; font-weight: bold; border: none;">Chi tiết</button>
-                              </center>
-                        </div>
-                        <div class="col-4" style="overflow: hidden;">
-                            <div class="image-container2">
-                                <img src="Media/trangmieng3.jpg" class="zoom">
-                              </div>
-                              <div style="text-align: center; margin-top: 10px; color: #a17a6d;">Đồ Uống - Tráng Miệng</div>
-                              <div style="color: #bd784e; font-size: 19px; font-weight: bolder; text-align: center;" >Nước Ổi ép</div>
-                              <div style="text-align: center; color: #33524b ; font-size: 19px; font-weight: bolder;">39.000 ₫ – 45.000 ₫</div>
-                              <center>
-                                  <button style="width: 100px; height: 30px; background-color: #601d1b; color: white; font-size: 18px; font-weight: bold; border: none;">Đặt món</button>
-                                  <button style="width: 100px; height: 30px; background-color: #33522d; color: white; font-size: 18px; font-weight: bold; border: none;">Chi tiết</button>
-                              </center>
-                        </div>
-                    </div>
-                    <div class="row" style="margin-top: 20px;">
-                        <div class="col-4" style="overflow: hidden;">
-                            <div class="image-container2">
-                                <img src="Media/trangmieng4.jpg" class="zoom">
-                              </div>
-                              <div style="text-align: center; margin-top: 10px; color: #a17a6d;">Đồ Uống - Tráng Miệng</div>
-                              <div style="color: #bd784e; font-size: 19px; font-weight: bolder; text-align: center;" >Kem Dừa</div>
-                              <div style="text-align: center; color: #33524b ; font-size: 19px; font-weight: bolder;">28.000 ₫ – 35.000 ₫</div>
-                              <center>
-                                  <button style="width: 100px; height: 30px; background-color: #601d1b; color: white; font-size: 18px; font-weight: bold; border: none;">Đặt món</button>
-                                  <button style="width: 100px; height: 30px; background-color: #33522d; color: white; font-size: 18px; font-weight: bold; border: none;">Chi tiết</button>
-                              </center>
-                        </div>
-                        <div class="col-4" style="overflow: hidden;">
-                            <div class="image-container2">
-                                <img src="Media/trangmieng5.jpg" class="zoom">
-                              </div>
-                              <div style="text-align: center; margin-top: 10px; color: #a17a6d;">Đồ Uống - Tráng Miệng</div>
-                              <div style="color: #bd784e; font-size: 19px; font-weight: bolder; text-align: center;" >Kem sầu riêng</div>
-                              <div style="text-align: center; color: #33524b ; font-size: 19px; font-weight: bolder;">28.000 ₫ – 35.000 ₫</div>
-                              <center>
-                                  <button style="width: 100px; height: 30px; background-color: #601d1b; color: white; font-size: 18px; font-weight: bold; border: none;">Đặt món</button>
-                                  <button style="width: 100px; height: 30px; background-color: #33522d; color: white; font-size: 18px; font-weight: bold; border: none;">Chi tiết</button>
-                              </center>
-                        </div>
-                        <div class="col-4" style="overflow: hidden;">
-                            <div class="image-container2">
-                                <img src="Media/trangmieng6.jpg" class="zoom">
-                              </div>
-                              <div style="text-align: center; margin-top: 10px; color: #a17a6d;">Đồ Uống - Tráng Miệng</div>
-                              <div style="color: #bd784e; font-size: 19px; font-weight: bolder; text-align: center;" >Kem chocolate</div>
-                              <div style="text-align: center; color: #33524b ; font-size: 19px; font-weight: bolder;">28.000 ₫ – 35.000 ₫</div>
-                              <center>
-                                  <button style="width: 100px; height: 30px; background-color: #601d1b; color: white; font-size: 18px; font-weight: bold; border: none;">Đặt món</button>
-                                  <button style="width: 100px; height: 30px; background-color: #33522d; color: white; font-size: 18px; font-weight: bold; border: none;">Chi tiết</button>
-                              </center>
-                        </div>
+                        <?php
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                if ($row['danhmuc'] == "Trangmieng") {
+                                    echo '
+                                    <div class="col-4" style="overflow: hidden; margin-bottom: 30px;">
+                                        <div class="image-container2">
+                                            <img src="../Upload/' . $row['hinhanh'] . '" alt="' . htmlspecialchars($row['tensp']) . '" class="zoom" style="width: 300px; height: 300px; object-fit: cover;">
+                                        </div>
+                                        <div class="product-info" style="text-align: center; margin-top: 5px; color: #a17a6d;">Đồ uống-Tráng miệng</div>
+                                        <div class="product-info" style="color: #bd784e; font-size: 19px; font-weight: bolder; text-align: center;">' . htmlspecialchars($row['tensp']) . '</div>
+                                        <div class="product-info" style="text-align: center; color: #33524b; font-size: 19px; font-weight: bolder;">' . number_format($row['gia'], 0, ',', '.') . ' ₫</div>
+                                        <center class="product-buttons">
+                                            <button style="width: 100px; height: 30px; background-color: #601d1b; color: white; font-size: 18px; font-weight: bold; border: none;">Đặt món</button>
+                                            <button style="width: 100px; height: 30px; background-color: #33522d; color: white; font-size: 18px; font-weight: bold; border: none;">Chi tiết</button>
+                                        </center>
+                                    </div>';
+                                }
+                            }
+                        } else {
+                            echo '<div class="col-12" style="text-align: center; font-size: 20px; color: #722c29;">Không có sản phẩm nào trong danh mục này.</div>';
+                        }
+                        ?>
                     </div>
                 </div>
             </div>

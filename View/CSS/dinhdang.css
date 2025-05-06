@@ -95,7 +95,13 @@ body{
   from {opacity: .4}
   to {opacity: 1}
 }
+.product-info {
+  margin-top: 2px; /* Giảm khoảng cách giữa ảnh và thông tin */
+}
 
+.product-buttons {
+  margin-top: 8px; /* Giảm khoảng cách giữa thông tin và nút */
+}
 .zoom {
     transition: transform 0.3s ease;
 }
