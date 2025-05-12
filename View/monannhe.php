@@ -60,21 +60,27 @@ $result = $sanpham->select_danhmuc("Monannhe"); // Truy vấn sản phẩm theo 
                     <div class="row">
                         <?php
                         if ($result->num_rows > 0) {
+                            $count = 0;
                             while ($row = $result->fetch_assoc()) {
-                                if ($row['danhmuc'] == "Monannhe") {
-                                    echo '
-                                    <div class="col-4" style="overflow: hidden; margin-bottom: 30px;">
-                                        <div class="image-container2">
-                                            <img src="../Upload/' . $row['hinhanh'] . '" alt="' . htmlspecialchars($row['tensp']) . '" class="zoom" style="width: 300px; height: 300px; object-fit: cover;">
-                                        </div>
-                                        <div class="product-info" style="text-align: center; margin-top: 5px; color: #a17a6d;">Món ăn nhẹ</div>
-                                        <div class="product-info" style="color: #bd784e; font-size: 19px; font-weight: bolder; text-align: center;">' . htmlspecialchars($row['tensp']) . '</div>
-                                        <div class="product-info" style="text-align: center; color: #33524b; font-size: 19px; font-weight: bolder;">' . number_format($row['gia'], 0, ',', '.') . ' ₫</div>
-                                        <center class="product-buttons">
-                                            <button style="width: 100px; height: 30px; background-color: #601d1b; color: white; font-size: 18px; font-weight: bold; border: none;">Đặt món</button>
-                                            <button style="width: 100px; height: 30px; background-color: #33522d; color: white; font-size: 18px; font-weight: bold; border: none;">Chi tiết</button>
-                                        </center>
-                                    </div>';
+                                $count++;
+                        ?>
+                        <div class="col-4" style="overflow: hidden; margin-bottom: 30px;">
+                            <div class="image-container2">
+                                <img src="../Upload/<?php echo $row['hinhanh']; ?>" alt="<?php echo htmlspecialchars($row['tensp']); ?>" class="zoom" style="width: 300px; height: 300px; object-fit: cover;">
+                            </div>
+                            <div class="product-info" style="text-align: center; margin-top: 5px; color: #a17a6d;">Món ăn nhẹ</div>
+                            <div class="product-info" style="color: #bd784e; font-size: 19px; font-weight: bolder; text-align: center;"><?php echo htmlspecialchars($row['tensp']); ?></div>
+                            <div class="product-info" style="text-align: center; color: #33524b; font-size: 19px; font-weight: bolder;"><?php echo number_format($row['gia'], 0, ',', '.'); ?> ₫</div>
+                            <center class="product-buttons">
+                                <button style="width: 100px; height: 30px; background-color: #601d1b; color: white; font-size: 18px; font-weight: bold; border: none;">Đặt món</button>
+                                <a href="chitietsp.php?id=<?php echo $row['id_sanpham']; ?>#start_view" style="text-decoration: none;">
+                                    <button style="width: 100px; height: 30px; background-color: #33522d; color: white; font-size: 18px; font-weight: bold; border: none;">Chi tiết</button>
+                                </a>
+                            </center>
+                        </div>
+                        <?php 
+                                if ($count % 3 == 0) {
+                                    echo '</div><div class="row mt-5">';
                                 }
                             }
                         } else {

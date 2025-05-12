@@ -17,7 +17,7 @@ session_start();
             </div>
             <div class="col-2">
                 <h4 style="display: inline-block; color: white;" class="my-5">
-                        <i class="fa-solid fa-cart-shopping" style="color: white;"></i>
+                    <i class="fa-solid fa-cart-shopping" style="color: white;"></i>
                 </h4>
             </div>
         </div>
@@ -56,22 +56,16 @@ session_start();
                         <i class="fa-solid fa-user"></i>
                     </button>
                     <ul class="dropdown-menu">
-                        <?php 
-                        if (isset($_SESSION['user_name'])) {
-                            // Hiển thị khi đã đăng nhập
-                            echo '
-                                <li><a class="dropdown-item">Xin chào, ' . htmlspecialchars($_SESSION['user_name']) . '</a></li>
-                                <li><a class="dropdown-item" href="#">Thông tin đơn hàng</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Đổi mật khẩu</a></li>
-                                <li><a class="dropdown-item" href="../Controller/logout.php">Đăng xuất</a></li>';
-                        } else {
-                            // Hiển thị khi chưa đăng nhập
-                            echo '
-                                <li><a class="dropdown-item" href="login.php">Đăng nhập</a></li>
-                                <li><a class="dropdown-item" href="dangky.php">Đăng ký</a></li>';
-                        }
-                        ?>
+                        <?php if (isset($_SESSION['user_name'])): ?>
+                            <li><a class="dropdown-item">Xin chào, <?= htmlspecialchars($_SESSION['user_name']); ?></a></li>
+                            <li><a class="dropdown-item" href="#">Thông tin đơn hàng</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Đổi mật khẩu</a></li>
+                            <li><a class="dropdown-item" href="../Controller/logout.php">Đăng xuất</a></li>
+                        <?php else: ?>
+                            <li><a class="dropdown-item" href="login.php">Đăng nhập</a></li>
+                            <li><a class="dropdown-item" href="dangky.php">Đăng ký</a></li>
+                        <?php endif; ?>
                     </ul>
                 </li>
             </ul>
