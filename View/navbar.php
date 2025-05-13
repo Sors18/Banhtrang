@@ -14,11 +14,13 @@ session_start();
                     <input type="text" class="form-control" placeholder="Tìm kiếm...">
                     <span class="input-group-text"><i class="fa-solid fa-magnifying-glass"></i></span>
                 </div>
-            </div>
+            </div>  
             <div class="col-2">
+                <a href="cart.php" style="text-decoration: none;">
                 <h4 style="display: inline-block; color: white;" class="my-5">
                     <i class="fa-solid fa-cart-shopping" style="color: white;"></i>
                 </h4>
+                </a>
             </div>
         </div>
     </div>
