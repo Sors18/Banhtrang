@@ -60,9 +60,9 @@ session_start();
                     <ul class="dropdown-menu">
                         <?php if (isset($_SESSION['user_name'])): ?>
                             <li><a class="dropdown-item">Xin chào, <?= htmlspecialchars($_SESSION['user_name']); ?></a></li>
-                            <li><a class="dropdown-item" href="#">Thông tin đơn hàng</a></li>
+                            <li><a class="dropdown-item" href="thongtindonhang.php">Thông tin đơn hàng</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Đổi mật khẩu</a></li>
+                            <li><a class="dropdown-item" href="doimk.php">Đổi mật khẩu</a></li>
                             <li><a class="dropdown-item" href="../Controller/logout.php">Đăng xuất</a></li>
                         <?php else: ?>
                             <li><a class="dropdown-item" href="login.php">Đăng nhập</a></li>
