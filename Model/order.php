@@ -85,13 +85,13 @@ class order {
     }
 
     // Báo cáo doanh thu theo ngày
-    public function revenueByDay($date) {
+     public function revenueByDay($date) {
         global $conn;
         $sql = "
-            SELECT SUM(cart.soluong * sanphams.gia) AS TongTien
+            SELECT SUM(cart.Soluong * sanpham.gia) AS TongTien
             FROM donhang
             JOIN cart ON donhang.id_donhang = cart.donhang
-            JOIN sanphams ON cart.sanpham_id = sanphams.id
+            JOIN sanpham ON cart.id_sanpham = sanpham.id_sanpham
             WHERE DATE(donhang.Time) = '$date'
             AND donhang.trangthai != 'Chờ xác nhận'
             AND donhang.trangthai != 'Đang vận chuyển'";
@@ -102,10 +102,10 @@ class order {
     public function revenueByMonth($month) {
         global $conn;
         $sql = "
-            SELECT SUM(cart.soluong * sanphams.gia) AS TongTien
+            SELECT SUM(cart.Soluong * sanpham.gia) AS TongTien
             FROM donhang
             JOIN cart ON donhang.id_donhang = cart.donhang
-            JOIN sanphams ON cart.sanpham_id = sanphams.id
+            JOIN sanpham ON cart.id_sanpham = sanpham.id_sanpham
             WHERE DATE_FORMAT(donhang.Time, '%Y-%m') = '$month'
             AND donhang.trangthai != 'Chờ xác nhận'
             AND donhang.trangthai != 'Đang vận chuyển'";
@@ -116,15 +116,16 @@ class order {
     public function revenueByYear($year) {
         global $conn;
         $sql = "
-            SELECT SUM(cart.soluong * sanphams.gia) AS TongTien
+            SELECT SUM(cart.Soluong * sanpham.gia) AS TongTien
             FROM donhang
             JOIN cart ON donhang.id_donhang = cart.donhang
-            JOIN sanphams ON cart.sanpham_id = sanphams.id
+            JOIN sanpham ON cart.id_sanpham = sanpham.id_sanpham
             WHERE YEAR(donhang.Time) = '$year'
             AND donhang.trangthai != 'Chờ xác nhận'
             AND donhang.trangthai != 'Đang vận chuyển'";
         return mysqli_query($conn, $sql);
     }
+
 
     public function chitietdonhang($id_donhang) {
         global $conn;

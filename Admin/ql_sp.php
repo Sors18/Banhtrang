@@ -1,114 +1,151 @@
+<!-- filepath: c:\xampp\htdocs\Project1\Admin\ql_sp.php -->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Responsive Bootstrap Advance Admin Template</title>
+    <title>Quản Lý Sản Phẩm</title>
 
     <!-- BOOTSTRAP STYLES-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONTAWESOME STYLES-->
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
-    <!--CUSTOM BASIC STYLES-->
-    <link href="assets/css/basic.css" rel="stylesheet" />
-    <!--CUSTOM MAIN STYLES-->
+    <!-- CUSTOM STYLES -->
     <link href="assets/css/custom.css" rel="stylesheet" />
-    <!-- GOOGLE FONTS-->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <style>
+        .table img {
+            border-radius: 8px;
+            object-fit: cover;
+        }
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f9f9f9;
+        }
+        .table-ttdh {
+            width: calc(100% - 260px); /* Chiều rộng bảng trừ đi chiều rộng sidebar */
+            margin: 30px auto;
+            margin-left: 240px; /* Đẩy bảng sang phải để vừa với sidebar */
+            border-collapse: collapse;
+            background-color: #FFF5D7;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            color: #333;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .table-ttdh th, .table-ttdh td {
+            padding: 12px 15px;
+            text-align: center;
+            border: 1px solid #e0e0e0;
+        }
+
+        .table-ttdh th {
+            background-color: #701c1c; /* Màu đỏ đậm */
+            color: #FFF;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .table-ttdh tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .table-ttdh tr:hover {
+            background-color: #ffe4e1;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-brown {
+        background-color: #8B4513; /* Màu nâu */
+        border-color: #8B4513;
+        color: white;
+        }
+        .btn-brown:hover {
+            background-color: #5A2E0C; /* Màu nâu đậm hơn khi hover */
+            border-color: #5A2E0C;
+            color: white;
+        }
+
+        .sidebar {
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background-color: #f4f4f4;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .content {
+            margin-left: 250px; /* Đẩy nội dung sang phải để vừa với sidebar */
+            padding: 20px;
+        }
+    </style>
 </head>
 <body>
+    <?php include "navbar.php"; ?>
 <div id="wrapper">
-        <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.php">ORIGATO</a>
-            </div>
-
-            <div class="header-right">
-
-                <a href="message-task.html" class="btn btn-info" title="New Message"><b>30 </b><i class="fa fa-envelope-o fa-2x"></i></a>
-                <a href="message-task.html" class="btn btn-primary" title="New Task"><b>40 </b><i class="fa fa-bars fa-2x"></i></a>
-                <a href="login.html" class="btn btn-danger" title="Logout"><i class="fa fa-exclamation-circle fa-2x"></i></a>
-
-            </div>
-        </nav>
-        <!-- /. NAV TOP  -->
-        <!-- /. NAV SIDE  -->
-        <div id="page-wrapper">
-            <div id="page-inner">
+    <div id="page-wrapper">
+        <div id="page-inner">
             <div class="row">
-                <div class="col-md-6" style="width: 100%">
-                  <!--   Kitchen Sink -->
+                <div class="col-md-12">
+                    <center><h2 class="text-center mb-4">Quản Lý Sản Phẩm</h2></center>
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <div class="table-responsive">
-                            <?php
-                                include('../Model/sanpham.php');
-                                $model=new sanpham();
-                                $select=$model->select();
-                            ?>
-                                <table class="table table-striped table-bordered table-hover">
+                                <?php
+                                    include('../Model/sanpham.php');
+                                    $model = new sanpham();
+                                    $select = $model->select();
+                                ?>
+                                <table class="table-ttdh">
                                     <thead>
-                                        <tr>
                                             <th>Danh mục</th>
                                             <th>Tên sản phẩm</th>
                                             <th>Giá</th>
                                             <th>Hình ảnh</th>
                                             <th>Mô tả</th>
-                                            <th colspan="2">Hành động</th>
+                                            <th colspan="2" class="text-center">Hành động</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    <?php foreach($select as $row){ ?>
-                                            <tr>
-                                                <td><?php echo $row['danhmuc'] ?></td>
-                                                <td><?php echo $row['tensp'] ?></td>
-                                                <td><?php echo $row['gia'] ?></td>
-                                                <td><img src="../Upload/<?php echo $row['hinhanh'] ?>" width="200px" height="200px" ></td>
-                                                <td><?php echo $row['mota'] ?></td>
-                                                <td><a href="../Controller/delete_sp.php?del=<?php echo $row['id_sanpham']?>"
-                                                         onClick="if(confirm('Bạn có chắc chắn xóa')) return true; 
-                                                                   else return false;">Delete</td>
-                                                <td><a href="update_sp.php?up=<?php echo $row['id_sanpham']?>"
-                                                         onClick="if(confirm('Bạn có muốn sửa')) return true; 
-                                                                   else return false;">Update</td>
-                                            </tr>
+                                    <?php foreach ($select as $row) { ?>
+                                        <tr>
+                                            <td><?php echo htmlspecialchars($row['danhmuc']); ?></td>
+                                            <td><?php echo htmlspecialchars($row['tensp']); ?></td>
+                                            <td><?php echo number_format($row['gia'], 0, ',', '.'); ?> VNĐ</td>
+                                            <td><img src="../Upload/<?php echo htmlspecialchars($row['hinhanh']); ?>" width="100px" height="100px"></td>
+                                            <td><?php echo htmlspecialchars($row['mota']); ?></td>
+                                            <td>
+                                                <a href="../Controller/delete_sp.php?del=<?php echo $row['id_sanpham']; ?>" 
+                                                   class="btn-action btn-delete"
+                                                   onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này?');">
+                                                   Xóa
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="update_sp.php?up=<?php echo $row['id_sanpham']; ?>" 
+                                                   class="btn-action btn-update"
+                                                   onclick="return confirm('Bạn có muốn sửa sản phẩm này?');">
+                                                   Sửa
+                                                </a>
+                                            </td>
+                                        </tr>
                                     <?php } ?>
                                     </tbody>
-                                    
                                 </table>
                             </div>
                         </div>
                     </div>
-                     <!-- End  Kitchen Sink -->
                 </div>
-                <!-- /. ROW  -->
-
             </div>
-            <!-- /. PAGE INNER  -->
         </div>
-        <!-- /. PAGE WRAPPER  -->
     </div>
-    <!-- /. WRAPPER  -->
-    <div id="footer-sec">
-        &copy; 2014 YourCompany | Design By : <a href="http://www.binarytheme.com/" target="_blank">BinaryTheme.com</a>
-    </div>
-    <!-- /. FOOTER  -->
-    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-    <!-- JQUERY SCRIPTS -->
-    <script src="assets/js/jquery-1.10.2.js"></script>
-    <!-- BOOTSTRAP SCRIPTS -->
-    <script src="assets/js/bootstrap.js"></script>
-     <!-- METISMENU SCRIPTS -->
-    <script src="assets/js/jquery.metisMenu.js"></script>
-    <!-- CUSTOM SCRIPTS -->
-    <script src="assets/js/custom.js"></script>
+</div>
 
-
+<script src="assets/js/jquery-1.10.2.js"></script>
+<script src="assets/js/bootstrap.js"></script>
+<script src="assets/js/jquery.metisMenu.js"></script>
+<script src="assets/js/custom.js"></script>
 </body>
 </html>

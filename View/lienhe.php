@@ -16,64 +16,7 @@
   </style>
 </head>
 <body>
-  <div style="background-color: #301414;" class="sticky-top">
-    <div class="container">
-        <div class="row">
-            <div class="col-2">
-                <a href="Trangchu.html" style="text-decoration: none;"><img width="90px" src="media/logo.png" class="mt-2" style="margin-left: 40px;"></a>
-            </div>
-            <div class="col-8 d-flex justify-content-center">
-                <div class="input-group  my-5" style="width: 700px;" >
-                    <input type="text" class="form-control" placeholder="Tìm kiếm...">
-                    <span class="input-group-text" ><i class="fa-solid fa-magnifying-glass"></i></span>
-                  </div>
-            </div>
-            <div class="col-2">
-                <h4 style="display: inline-block; color: white;" class="my-5">Tư Vấn  &nbsp; &nbsp; <i class="fa-solid fa-cart-shopping"></i></h4>
-                
-            </div>
-        </div>
-    </div>
-    
-    <nav class="navbar navbar-expand-sm" style="background-color: #681c1c;">
-        <div class="container" style="font-size: 19px;  color: white;">
-            <ul class="navbar-nav me-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="gioithieu.html" style="color: white; margin-left: 17px; font-weight: bold;">Giới Thiệu</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="datban.html" style="color: white; margin-left: 5px; font-weight: bold;">Đặt Bàn</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link  dropdown-toggle" href="#" role="button" style="color: white; margin-left: 10px; font-weight: bold;">Thực Đơn</a>
-                <ul class="dropdown-menu dropdown-content">
-                  <li><a class="dropdown-item" href="banhtrang.html" style="font-size: 19px; margin-bottom: 5px;">Bánh Tráng</a></li>
-                  <li><a class="dropdown-item" href="salad.html" style="font-size: 19px; margin-bottom: 5px;">Salad-Rau</a></li>
-                  <li><a class="dropdown-item" href="monannhe.html" style="font-size: 19px; margin-bottom: 5px;">Món ăn nhẹ</a></li>
-                  <li><a class="dropdown-item" href="gachimlon.html" style="font-size: 19px; margin-bottom: 5px;">Món gà-chim-lợn</a></li>
-                  <li><a class="dropdown-item" href="monca.html" style="font-size: 19px; margin-bottom: 5px;">Món cá</a></li>
-                  <li><a class="dropdown-item" href="trangmieng.html" style="font-size: 19px; margin-bottom: 5px;">Đồ uống-Tráng miệng</a></li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="tintuc.html" style="color: white; margin-left: 5px; font-weight: bold;">Tin Tức</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="tuyendung.html" style="color: white; margin-left: 5px; font-weight: bold;">Tuyển Dụng</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="lienhe.html" style="color: white; margin-left: 5px; font-weight: bold;">Liên Hệ</a>
-              </li>
-              <li class="nav-item float-right"  >
-                <a class="nav-link" href="#" style="color: white; margin-left: 300px; font-weight: bold;"> 
-                    <i class="fa-solid fa-phone"></i>1900 63 65 69
-
-                </a>
-              </li>
-            </ul>
-        </div>
-    </nav>
-  </div>
+  <?php include('navbar.php'); ?>
    <img src="Media/TK-ANH-WEB-08-1400x474.jpg" alt="">
    <h1 style="text-align: center; color: #601d1b; margin-bottom:30px; margin-top: 20px;">Đăng ký tư vấn</h1> 
 

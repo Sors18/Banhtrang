@@ -7,8 +7,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         .table-ttdh {
-            width: 90%;
+            width: calc(100% - 260px); /* Chiều rộng bảng trừ đi chiều rộng sidebar */
             margin: 30px auto;
+            margin-left: 260px; /* Đẩy bảng sang phải để tránh sidebar */
             border-collapse: collapse;
             background-color: #FFF5D7;
             font-family: Arial, sans-serif;
@@ -54,6 +55,7 @@
     </style>
 </head>
 <body>
+    <?php include("navbar.php"); ?>
     <?php
         include("../Model/order.php");
         $id = $_GET['id'];

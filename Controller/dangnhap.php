@@ -11,14 +11,19 @@ if (isset($_POST['txtlog'])) {
         $tmp = $tmp->fetch_assoc();
 
         if ($tmp && $_POST['txtpass'] === $tmp['pass']) {
-            $_SESSION['user_name'] = $_POST['txtname'];
-            if ($_SESSION['user_name'] === 'admin') {
-                echo "<script>window.location.href = '#';</script>";
+            // Lưu thông tin vào session
+            $_SESSION['user_name'] = $tmp['username'];
+            $_SESSION['type'] = $tmp['type']; // Lấy type từ cơ sở dữ liệu
+            $_SESSION['id_user'] = $tmp['id_user']; // Lưu id_user để sử dụng sau
+
+            // Kiểm tra quyền admin
+            if ($_SESSION['type'] == 1) {
+                echo "<script>window.location.href = '../Admin/dashboard.php';</script>";
             } else {
                 echo "<script>window.location.href = '../View/Trangchu.php';</script>";
             }
         } else {
-            echo "<script>window.location.href = '../View/login.php';</script>";
+            echo "<script>alert('Sai tên đăng nhập hoặc mật khẩu!'); window.location.href = '../View/login.php';</script>";
         }
     }
 }

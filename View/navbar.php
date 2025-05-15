@@ -30,9 +30,6 @@ session_start();
                 <li class="nav-item">
                     <a class="nav-link" href="gioithieu.php" style="color: white; margin-left: 17px; font-weight: bold;">Giới Thiệu</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="datban.php" style="color: white; margin-left: 5px; font-weight: bold;">Đặt Bàn</a>
-                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" style="color: white; margin-left: 10px; font-weight: bold;">Thực Đơn</a>
                     <ul class="dropdown-menu dropdown-content">
