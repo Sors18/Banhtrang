@@ -49,33 +49,31 @@
 
   <div style="background-color: #2b4425; color: white; font-size: 30px; font-weight: bold; width: 270px; height: 70px; text-align: center; margin-left: 8.5%; padding-top: 10px; margin-top: 2%; margin-bottom: 2%; border-radius: 20px;">Món mới</div>
   <div class="container">
-    <div class="row">
-        <div class="col-3" style="overflow: hidden;">
-            <div class="image-container">
-              <img src="Media/monmoi1.jpg" class="zoom">
+    <div class="row justify-content-center">
+        <?php
+        include_once("../Model/sanpham.php");
+        $sp = new sanpham();
+        $result = $sp->select();
+        $count = 0;
+        while ($row = mysqli_fetch_assoc($result)) {
+            if ($count >= 4) break;
+        ?>
+            <div class="col-md-3 mb-4 d-flex flex-column align-items-center">
+                <a href="chitietsp.php?id=<?php echo $row['id_sanpham']; ?>#start_view" style="text-decoration: none;">
+                    <img src="../Upload/<?php echo htmlspecialchars($row['hinhanh']); ?>" 
+                         alt="<?php echo htmlspecialchars($row['tensp']); ?>" 
+                         style="height: 250px; width: 250px; object-fit: cover; border-radius: 20px;">
+                    <div style="color: #bd784e; font-weight: bold; text-align: center; margin-top: 10px; font-size: 20px;">
+                        <?php echo htmlspecialchars($row['tensp']); ?>
+                    </div>
+                </a>
             </div>
-            <div style="color: #bd784e; font-size: 19px; font-weight: bolder; text-align: center; margin-top: 10px;" >TAI HEO THẢO MỘC</div>
-        </div>
-        <div class="col-3">
-            <div class="image-container">
-              <img src="Media/monmoi2.jpg" class="zoom">
-            </div>
-            <div style="color: #bd784e; font-size: 19px; font-weight: bolder; text-align: center; margin-top: 10px;">SALAD RAU CÀNG CUA</div>
-        </div>
-        <div class="col-3">
-            <div class="image-container">
-              <img src="Media/monmoi3.jpg" class="zoom">
-            </div>
-            <div style="color: #bd784e; font-size: 19px; font-weight: bolder; text-align: center; margin-top: 10px;">CÁ SABA NƯỚNG</div>
-        </div>
-        <div class="col-3">
-          <div class="image-container">
-            <img src="Media/monmoi4.jpg" class="zoom">
-          </div>
-          <div style="color: #bd784e; font-size: 19px; font-weight: bolder; text-align: center; margin-top: 10px;">BÊ SỮA XÔNG HƠI</div>
-      </div>
+        <?php 
+            $count++;
+        } 
+        ?>
     </div>
-  </div>
+</div>
   <div>
     <div style="border: none; border-top: 30px solid #601d1b; width: 100%; margin-top: 100px; margin-bottom: 10px;"></div>
     <div style="border: none; border-top: 10px solid #2b4425; background-color: #2b4425; width: 100%;"></div>
@@ -85,47 +83,73 @@
   </div>
   <div class="container" style="margin-top: 30px;">
     <div class="row">
-    <div class="col-4">
-      <div>
-        <img src="Media/Group-7-1.png" style="width: 360px; height: 600px;">
-      </div>
-      <div style="color: #bd784e; text-align: center; font-size: 28px; font-weight: bold; text-transform: uppercase;">Bánh tráng</div>
-    </div>
-    <div class="col-8">
-      <div class="row">
-        <div class="col-6">
-          <img src="Media/Group-8-1.png" style="width: 360px; height: 250px;">
-          <div style="color: #bd784e; text-align: center; font-size: 28px; font-weight: bold; text-transform: uppercase; margin-top: 10px;">Rau – Salad</div>
+        <div class="col-4">
+            <a href="banhtrang.php" style="text-decoration: none;">
+                <img src="Media/Group-7-1.png" style="width: 360px; height: 600px;">
+                <div style="color: #bd784e; text-align: center; font-size: 28px; font-weight: bold; text-transform: uppercase;">
+                    Bánh tráng
+                </div>
+            </a>
         </div>
-        <div class="col-6">
-          <img src="Media/Group-10-1.png" style="width: 360px; height: 250px;">
-          <div style="color: #bd784e; text-align: center; font-size: 28px; font-weight: bold; text-transform: uppercase; margin-top: 10px;">Món gà</div>
+        <div class="col-8">
+            <div class="row">
+                <div class="col-6">
+                    <a href="salad.php" style="text-decoration: none;">
+                        <img src="Media/Group-8-1.png" style="width: 360px; height: 250px;">
+                        <div style="color: #bd784e; text-align: center; font-size: 28px; font-weight: bold; text-transform: uppercase; margin-top: 10px;">
+                            Rau – Salad
+                        </div>
+                    </a>
+                </div>
+                <div class="col-6">
+                    <a href="gachimlon.php" style="text-decoration: none;">
+                        <img src="Media/Group-10-1.png" style="width: 360px; height: 250px;">
+                        <div style="color: #bd784e; text-align: center; font-size: 28px; font-weight: bold; text-transform: uppercase; margin-top: 10px;">
+                            Món gà
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <a href="monca.php" style="text-decoration: none;">
+                        <img src="Media/monca-1.png" style="width: 360px; height: 250px; margin-top: 40px;">
+                        <div style="color: #bd784e; text-align: center; font-size: 28px; font-weight: bold; text-transform: uppercase; margin-top: 10px;">
+                            Món cá
+                        </div>
+                    </a>
+                </div>
+                <div class="col-6">
+                    <a href="monannhe.php" style="text-decoration: none;">
+                        <img src="Media/monnhe1.jpg" style="width: 360px; height: 250px; border-radius: 15px; margin-top: 40px;">
+                        <div style="color: #bd784e; text-align: center; font-size: 28px; font-weight: bold; text-transform: uppercase; margin-top: 10px;">
+                            Món ăn nhẹ
+                        </div>
+                    </a>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-6">
-          <img src="Media/monca-1.png" style="width: 360px; height: 250px; margin-top: 40px;">
-          <div style="color: #bd784e; text-align: center; font-size: 28px; font-weight: bold; text-transform: uppercase; margin-top: 10px;">Món cá</div>
-        </div>
-        <div class="col-6">
-          <img src="Media/monnhe1.jpg" style="width: 360px; height: 250px; border-radius: 15px; margin-top: 40px;">
-          <div style="color: #bd784e; text-align: center; font-size: 28px; font-weight: bold; text-transform: uppercase; margin-top: 10px;">Món ăn nhẹ</div>
-        </div>
-      </div>
-    </div>
     </div>
     <div class="row" style="margin-top: 30px;">
-      <div class="col-4">
-        <img src="Media/Group-14-1.png" style="width: 350px; height: 350px;">
-      </div>
-      <div class="col-4">
-        <img src="Media/Group-15-1.png" style="width: 350px; height: 350px;">
-      </div>
-      <div class="col-4">
-        <img src="Media/Group-16-1.png" style="width: 350px; height: 350px;">
-      </div>
+        <div class="col-4">
+            <a href="trangmieng.php" style="text-decoration: none;">
+                <img src="Media/Group-14-1.png" style="width: 350px; height: 350px;">
+            </a>
+        </div>
+        <div class="col-4">
+            <a href="trangmieng.php" style="text-decoration: none;">
+                <img src="Media/Group-15-1.png" style="width: 350px; height: 350px;">
+            </a>
+        </div>
+        <div class="col-4">
+            <a href="trangmieng.php" style="text-decoration: none;">
+                <img src="Media/Group-16-1.png" style="width: 350px; height: 350px;">
+            </a>
+        </div>
     </div>
-    <div style="color: #bd784e; text-align: center; font-size: 28px; font-weight: bold; text-transform: uppercase;">Đồ uống – Tráng miệng</div>
+    <div style="color: #bd784e; text-align: center; font-size: 28px; font-weight: bold; text-transform: uppercase;">
+        Đồ uống – Tráng miệng
+    </div>
   </div>
 
 

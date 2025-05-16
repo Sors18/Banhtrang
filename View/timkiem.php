@@ -1,9 +1,3 @@
-<?php
-include "../Model/sanpham.php"; // Import lớp sanpham
-
-$sanpham = new sanpham(); // Tạo đối tượng lớp sanpham
-$result = $sanpham->select_danhmuc("Monannhe"); // Truy vấn sản phẩm theo danh mục "banhtrang"
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,21 +23,30 @@ $result = $sanpham->select_danhmuc("Monannhe"); // Truy vấn sản phẩm theo 
       <div class="container">
         <div class="row">
             <?php include('sidebar.php'); ?>
+            <?php 
+            include ("../Model/sanpham.php");
+            $model = new sanpham();
+            $count = 0;
+            // Sửa lại lấy từ khóa từ input name="q"
+            if(isset($_GET['q']) && trim($_GET['q']) != '') {
+                $tukhoa = trim($_GET['q']); 
+                $sl = $model->select_find($tukhoa);
+                if ($sl && $sl->num_rows > 0) {    
+        ?>
             <div class="col-9">
-                <div style="color: #bd784e; font-size: 40px; font-weight: 500; text-align: center; margin-top: 50px; margin-bottom: 10px;">Món ăn nhẹ</div>
+                <div style="color: #bd784e; font-size: 40px; font-weight: 500; text-align: center; margin-top: 50px; margin-bottom: 10px;">Kết quả tìm kiếm</div>
                 <div class="container">
                     <div class="row">
                         <?php
-                        if ($result->num_rows > 0) {
-                            $count = 0;
-                            while ($row = $result->fetch_assoc()) {
-                                $count++;
+                            foreach ($sl as $row) { 
+                                $count++;     
+                            
                         ?>
                         <div class="col-4" style="overflow: hidden; margin-bottom: 30px;">
                             <div class="image-container2">
                                 <img src="../Upload/<?php echo $row['hinhanh']; ?>" alt="<?php echo htmlspecialchars($row['tensp']); ?>" class="zoom" style="width: 300px; height: 300px; object-fit: cover;">
                             </div>
-                            <div class="product-info" style="text-align: center; margin-top: 5px; color: #a17a6d;">Món ăn nhẹ</div>
+                            <div class="product-info" style="text-align: center; margin-top: 5px; color: #a17a6d;"><?php echo htmlspecialchars($row['danhmuc']); ?></div>
                             <div class="product-info" style="color: #bd784e; font-size: 19px; font-weight: bolder; text-align: center;"><?php echo htmlspecialchars($row['tensp']); ?></div>
                             <div class="product-info" style="text-align: center; color: #33524b; font-size: 19px; font-weight: bolder;"><?php echo number_format($row['gia'], 0, ',', '.'); ?> ₫</div>
                             <center class="product-buttons">
@@ -54,14 +57,31 @@ $result = $sanpham->select_danhmuc("Monannhe"); // Truy vấn sản phẩm theo 
                             </center>
                         </div>
                         <?php 
-                                if ($count % 3 == 0) {
-                                    echo '</div><div class="row mt-5">';
-                                }
+                        if ($count % 3 == 0) {
+                            echo '</div><div class="row mt-5">';
                             }
-                        } else {
-                            echo '<div class="col-12" style="text-align: center; font-size: 20px; color: #722c29;">Không có sản phẩm nào trong danh mục này.</div>';
+                            } // end foreach
+                        } else { // Không có kết quả
+                            ?>
+                            <div class="col-9">
+                                <div style="color: #bd784e; font-size: 30px; font-weight: 500; text-align: center; margin-top: 50px;">
+                                    Không tìm thấy sản phẩm phù hợp với từ khóa "<b><?php echo htmlspecialchars($tukhoa); ?></b>"
+                                </div>
+                            </div>
+                            <?php
                         }
+                    } else { // Không nhập từ khóa
                         ?>
+                        <div class="col-9">
+                            <div style="color: #bd784e; font-size: 30px; font-weight: 500; text-align: center; margin-top: 50px;">
+                                Vui lòng nhập từ khóa tìm kiếm.
+                            </div>
+                        </div>
+                        <?php
+                    }
+                    ?>
+                        </div>
+                    </div>
                     </div>
                 </div>
             </div>

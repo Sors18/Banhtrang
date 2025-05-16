@@ -10,9 +10,30 @@ session_start();
                 </a>
             </div>
             <div class="col-8 d-flex justify-content-center">
-                <div class="input-group my-5" style="width: 700px;">
-                    <input type="text" class="form-control" placeholder="Tìm kiếm...">
-                    <span class="input-group-text"><i class="fa-solid fa-magnifying-glass"></i></span>
+                <div class="input-group my-5 justify-content-center" style="width: 500px;">
+                    <form method="get" action="timkiem.php" style="display: flex; width: 100%;">
+                        <div class="input-group" style="width: 100%;">
+                            <span class="input-group-text bg-white border-end-0" style="border-radius: 25px 0 0 25px;">
+                                <i class="fa-solid fa-magnifying-glass" style="color: #dc3545;"></i>
+                            </span>
+                            <input 
+                                type="text" 
+                                class="form-control border-start-0 border-end-0" 
+                                name="q" 
+                                placeholder="Tìm kiếm món ăn, đồ uống..." 
+                                required 
+                                style="border-radius: 0; box-shadow: none;"
+                            >
+                            <button 
+                                class="btn btn-danger" 
+                                type="submit" 
+                                name="txtfind" 
+                                style="border-radius: 0 25px 25px 0; font-weight: bold;"
+                            >
+                                Tìm kiếm
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>  
             <div class="col-2">
