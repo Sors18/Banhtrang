@@ -10,28 +10,11 @@ if (isset($_POST['txtdel'])) {
         $cart = new cart();
         $result = $cart->delete_pro_in_cart($user_id, $pro_id);
 
-        if ($result) {
-            // Show success alert and redirect
-            echo "<script>
-                alert('Xóa sản phẩm khỏi giỏ hàng thành công!');
-                window.location.href = '../View/cart.php';
-            </script>";
-        } else {
-            // Show error alert and redirect
-            echo "<script>
-                alert('Xóa sản phẩm khỏi giỏ hàng thất bại!');
-                window.location.href = '../View/cart.php';
-            </script>";
-        }
-    } else {
-        // Show invalid input alert and redirect
-        echo "<script>
-            alert('Dữ liệu không hợp lệ!');
-            window.location.href = '../View/cart.php';
-        </script>";
-    }
-} else {
-    // Redirect back to the cart page if accessed incorrectly
-    header("Location: ../View/cart.php");
+         $_SESSION['alert'] = [
+                'title' => 'Xóa sản phẩm thành công!',
+                'icon' => 'success'
+                ];
 }
+}
+header('Location: ../View/cart.php#start_view');
 ?>

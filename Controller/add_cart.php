@@ -30,26 +30,12 @@ if (isset($_POST['txtsub'])) {
             $result = $cart->update_cart($user_id, $product_id, $quantity);
         }
 
-        if ($result) {
-            echo "<script>
-                alert('Thêm sản phẩm vào giỏ hàng thành công!');
-                window.location.href='../View/cart.php';
-            </script>";
-        } else {
-            echo "<script>
-                alert('Thêm sản phẩm vào giỏ hàng thất bại!');
-                window.location.href='../View/banhtrang.php';
-            </script>";
-        }
-    } else {
-        echo "<script>
-            alert('Dữ liệu không hợp lệ!');
-            window.location.href='../View/banhtrang.php';
-        </script>";
-    }
-} else {
-    // Chuyển hướng nếu truy cập không hợp lệ
-    header("Location: ../View/banhtrang.php");
-    exit();
+                $_SESSION['alert'] = [
+                'title' => 'Thêm sản phẩm thành công!',
+                'icon' => 'success'
+                ];
+            }
 }
+$_SESSION['cart_count'] = $cart->sl_sl($user_identify);
+header('Location: ../View/chitietsp.php?id=' . $_POST['id_pro'] . '#start_view');
 ?>

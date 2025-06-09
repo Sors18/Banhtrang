@@ -126,17 +126,30 @@
                                 <td><?php echo number_format($tongTien, 0, ',', '.'); ?> ₫</td>
                                 <td><?php echo htmlspecialchars($row['Time']); ?></td>
                                 <td>
-                                    <span class="badge 
-                                        <?php 
-                                            if ($row['trangthai'] == 'Chờ xác nhận') echo 'bg-warning';
-                                            else if ($row['trangthai'] == 'Đang vận chuyển') echo 'bg-primary';
-                                            else echo 'bg-success';
-                                        ?>">
-                                        <?php echo htmlspecialchars($row['trangthai']); ?>
-                                    </span>
+                                    <form action="../Controller/update_tt.php" method="post" style="display:inline;">
+                                        <input type="hidden" name="id" value="<?php echo $row['id_donhang']; ?>">
+                                        <?php if ($row['trangthai'] == 'Chờ xác nhận') { ?>
+                                            <button type="submit" name="action" value="xacnhan" 
+                                                class="btn btn-outline-secondary btn-sm" 
+                                                style="width: 110px; font-size: 13px;">
+                                                Chờ xác nhận
+                                            </button>
+                                        <?php } else if ($row['trangthai'] == 'Đang vận chuyển') { ?>
+                                            <button type="submit" name="action" value="hoanthanh" 
+                                                class="btn btn-outline-primary btn-sm" 
+                                                style="width: 110px; font-size: 13px;">
+                                                Đang vận chuyển
+                                            </button>
+                                        <?php } else { ?>
+                                            <span class="badge bg-success" 
+                                                style="width: 110px; font-size: 13px; padding: 7px 0; background-color: #4CAF50;">
+                                                Hoàn thành
+                                            </span>
+                                        <?php } ?>
+                                    </form>
                                 </td>
                                 <td>
-                                    <a href="../Admin/order_inf.php?id=<?php echo $row['id_donhang']; ?>" style="display: inline-block; padding: 8px 12px; background-color: #701c1c; color: white; text-decoration: none; border-radius: 4px; font-size: 14px; text-align: center;">
+                                    <a href="order_inf.php?id=<?php echo $row['id_donhang']?>" class="btn btn-info btn-sm">
                                         Xem Chi Tiết
                                     </a>
                                 </td>

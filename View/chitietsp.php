@@ -44,7 +44,7 @@ if (!$sl_id) {
                 <p><strong>Danh mục:</strong> <?php echo htmlspecialchars($sl_id['danhmuc']); ?></p>
                 <p><strong>Giá:</strong> <span style="color: red;"><?php echo number_format($sl_id['gia'], 0, ',', '.'); ?> VNĐ</span></p>
                 <p><strong>Mô tả:</strong> <?php echo htmlspecialchars($sl_id['mota']); ?></p>
-                <form method="post" action="../Controller/add_cart.php">
+                <form id="add-to-cart-form" method="post" action="../Controller/add_cart.php">
                     <div class="input-group mb-3" style="width: 210px;">
                         <input type="hidden" name="id_pro" value="<?php echo $sl_id['id_sanpham']; ?>">
                         <input type="number" name="txtsl" class="form-control" value="1" min="1">
@@ -86,5 +86,19 @@ if (!$sl_id) {
     </div>
 
     <!-- <?php include("footer.php"); ?> -->
+
+    <?php if (isset($_SESSION['alert'])): ?>
+        <?php $alert = $_SESSION['alert']; ?>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                Swal.fire({
+                    title: "<?= $alert['title'] ?>",
+                    icon: "<?= $alert['icon'] ?>"
+                });
+            });
+        </script>
+        <?php unset($_SESSION['alert']); ?>
+    <?php endif; ?>
 </body>
 </html>

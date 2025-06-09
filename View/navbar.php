@@ -1,5 +1,13 @@
 <?php
 session_start();
+$user_identify = isset($_SESSION['user_name']) ? $_SESSION['user_name'] : session_id();
+?>
+<?php
+    include_once("../Model/cart.php"); // Sửa thành include_once
+    $sl_sl = new cart();
+    $cart_count = $sl_sl->sl_sl($user_identify);
+    $_SESSION['cart_count'] = $cart_count; // Gán giá trị vào session
+
 ?>
 <div style="background-color: #301414;" class="sticky-top">
     <div class="container">
@@ -37,10 +45,23 @@ session_start();
                 </div>
             </div>  
             <div class="col-2">
-                <a href="cart.php" style="text-decoration: none;">
-                <h4 style="display: inline-block; color: white;" class="my-5">
-                    <i class="fa-solid fa-cart-shopping" style="color: white;"></i>
-                </h4>
+                <a href="cart.php" style="text-decoration: none; position: relative;">
+                    <h4 style="display: inline-block; color: white;" class="my-5">
+                        <i class="fa-solid fa-cart-shopping" style="color: white; position: relative;"></i>
+                        <span style="
+                            position: absolute;
+                            top: 10px;
+                            right: -10px;
+                            background: #dc3545;
+                            color: white;
+                            border-radius: 50%;
+                            padding: 2px 8px;
+                            font-size: 14px;
+                            font-weight: bold;
+                        ">
+                            <?= isset($_SESSION['cart_count']) ? $_SESSION['cart_count'] : 0 ?>
+                        </span>
+                    </h4>
                 </a>
             </div>
         </div>

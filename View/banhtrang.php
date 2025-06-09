@@ -40,15 +40,18 @@ $result = $sanpham->select_danhmuc("Banhtrang"); // Truy vấn sản phẩm theo
                                 $count++;
                         ?>
                         <div class="col-4" style="overflow: hidden; margin-bottom: 30px;">
-                            <div class="image-container2">
-                                <img src="../Upload/<?php echo $row['hinhanh']; ?>" alt="<?php echo htmlspecialchars($row['tensp']); ?>" class="zoom" style="width: 300px; height: 300px; object-fit: cover;">
-                            </div>
+                            <a href="chitietsp.php?id=<?php echo $row['id_sanpham']; ?>#start_view" style="text-decoration: none;">
+                                <div class="image-container2">
+                                    <img src="../Upload/<?php echo $row['hinhanh']; ?>" alt="<?php echo htmlspecialchars($row['tensp']); ?>" class="zoom" style="width: 300px; height: 300px; object-fit: cover;">
+                                </div>
+                            </a>
                             <div class="product-info" style="text-align: center; margin-top: 5px; color: #a17a6d;">Bánh Tráng</div>
                             <div class="product-info" style="color: #bd784e; font-size: 19px; font-weight: bolder; text-align: center;"><?php echo htmlspecialchars($row['tensp']); ?></div>
                             <div class="product-info" style="text-align: center; color: #33524b; font-size: 19px; font-weight: bolder;"><?php echo number_format($row['gia'], 0, ',', '.'); ?> ₫</div>
                             <center class="product-buttons">
-                                <button style="width: 100px; height: 30px; background-color: #601d1b; color: white; font-size: 18px; font-weight: bold; border: none;">Đặt món</button>
-                                <a href="chitietsp.php?id=<?php echo $row['id_sanpham']; ?>#start_view" style="text-decoration: none;">
+                                <a href="chitietsp.php?id=<?php echo $row['id_sanpham']; ?>#start_view" style="text-decoration: none; display: inline-block;">
+                                </a>
+                                <a href="chitietsp.php?id=<?php echo $row['id_sanpham']; ?>#start_view" style="text-decoration: none; display: inline-block;">
                                     <button style="width: 100px; height: 30px; background-color: #33522d; color: white; font-size: 18px; font-weight: bold; border: none;">Chi tiết</button>
                                 </a>
                             </center>
@@ -67,6 +70,84 @@ $result = $sanpham->select_danhmuc("Banhtrang"); // Truy vấn sản phẩm theo
             </div>
         </div>
     </div>
-    <?php include('footer.php'); ?>
+ 
 </body>
+<footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-4">
+          <div style="color:#fefddb; font-size: 25px; font-weight: bold; margin-top: 50px;">HỖ TRỢ KHÁCH HÀNG</div>
+          <div style="color:#fefddb; font-size: 15px; margin-top: 10px;">
+            1900.63.65.69 <br>
+            T2 - CN: 10:30 - 22:00
+          </div>
+          <div style="color:white; font-size: 17px; margin-top: 10px;">Chính sách thanh toán hoàn tiền</div>
+          <div style="color:white; font-size: 17px; margin-top: 10px;">Chính sách xử lý khiếu nại</div>
+          <div style="color:white; font-size: 17px; margin-top: 10px;">Chính sách vận chuyển</div>
+          <div style="color:white; font-size: 17px; margin-top: 10px;">Chính sách bảo mật</div>
+        </div>
+        <div class="col-4">
+          <div style="color:white; font-size: 25px; font-weight: bold; margin-top: 50px;">Nhà hàng Bánh tráng Phú Cường</div>
+          <div class="row">
+            <div class="col-6">
+              <div style="color:#fefddb; font-size: 17px; margin-top: 10px;">Giới thiệu</div>
+              <div style="color:#fefddb; font-size: 17px; margin-top: 10px;">Menu</div>
+              <div style="color:#fefddb; font-size: 17px; margin-top: 10px;">Đặt bàn</div>
+            </div>
+            <div class="col-6">
+              <div style="color:#fefddb; font-size: 17px; margin-top: 10px;">Thông tin khuyến mãi</div>
+              <div style="color:#fefddb; font-size: 17px; margin-top: 10px;">Tuyển dụng</div>
+              <div style="color:#fefddb; font-size: 17px; margin-top: 10px;">Liên hệ</div>
+            </div>
+          </div>  
+        </div>
+        <div class="col-4">
+          <div style="color:#fefddb; font-size: 25px; font-weight: bold; margin-top: 50px;">MẠNG XÃ HỘI</div>
+          <img src="Media/nhung.png" style="margin-bottom: 10px;">
+          <i class="fa-brands fa-facebook fa-2x" style="color:white; margin-right: 20px; margin-left: 70px;"></i>
+          <i class="fa-solid fa-envelope fa-2x" style="color:white;  margin-right: 20px;"></i>
+          <i class="fa-solid fa-phone fa-2x" style="color:white;  margin-right: 20px; margin-right: 20px;"></i>
+          <i class="fa-brands fa-youtube fa-2x" style="color:white;  margin-right: 20px;"></i>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <div style="color:#fefddb; font-size: 25px; font-weight: bold; margin-top: 50px;">CƠ SỞ 1:</div>
+          <div style="color:#fefddb; font-size: 17px; margin-top: 10px;">
+            * 42 Nguyên Hồng - Láng Hạ - Đống Đa - HN <br>
+            * 024 3773 9846 - 09 3223 2299
+          </div>
+          <div style="color:#fefddb; font-size: 25px; font-weight: bold; margin-top: 50px;">CƠ SỞ 2:</div>
+          <div style="color:#fefddb; font-size: 17px; margin-top: 10px; ">
+            * 104 Yết Kiêu - Nguyễn Du - Hai Bà Trưng - HN <br>
+            * 024 6277 8877 - 092 667 6996
+          </div>
+        </div>
+        <div class="col-4">
+          <div style="color:#fefddb; font-size: 25px; font-weight: bold; margin-top: 50px;">CƠ SỞ 3:</div>
+          <div style="color:#fefddb; font-size: 17px; margin-top: 10px; ">
+            * Tầng 1 - Tòa nhà Hồ Gươm Plaza - 102 Trần Phú (mặt đường Vũ Trọng Khánh) - Hà Đông - HN <br>
+            * 024 2244 6060 - 09 3344 6060
+          </div>
+          <div style="color:#fefddb; font-size: 25px; font-weight: bold; margin-top: 50px;">CƠ SỞ 4:</div>
+          <div style="color:#fefddb; font-size: 17px; margin-top: 10px; ">
+            * 100 Vũ Phạm Hàm - Cầu Giấy - HN <br>
+            * 024 2266 6060 - 08 2266 6060
+          </div>
+        </div>
+        <div class="col-4">
+          <div style="color:#fefddb; font-size: 25px; font-weight: bold; margin-top: 50px;">CƠ SỞ 5:</div>
+          <div style="color:#fefddb; font-size: 17px; margin-top: 10px;  ">
+            * 340 Bà Triệu - Hai Bà Trưng - HN <br>
+            * 024 3333 5533 - 0373 340 340
+          </div>
+          <div style="color:#fefddb; font-size: 25px; font-weight: bold; margin-top: 50px;">CƠ SỞ 6:</div>
+          <div style="color:#fefddb; font-size: 17px; margin-top: 10px;  ">
+            * 76 Nguyễn Chí Thanh - Đống Đa - HN <br>
+            * 024 6288 6060 - 0901 01 7676
+          </div>
+        </div>
+      </div>  
+    </div>
+  </footer>
 </html>

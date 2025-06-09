@@ -10,29 +10,12 @@ if (isset($_POST['txtup'])) {
         $cart = new cart();
         $result = $cart->capnhatgiohang($user_id, $cart_id, $quantity);
     
-        if ($result) {
-            // Show success alert and redirect
-            echo "<script>
-                alert('Cập nhật giỏ hàng thành công!');
-                window.location.href = '../View/cart.php';
-            </script>";
-        } else {
-            // Show error alert and redirect
-            echo "<script>
-                alert('Cập nhật giỏ hàng thất bại!');
-                window.location.href = '../View/cart.php';
-            </script>";
-        }
-    } else {
-        // Show invalid input alert and redirect
-        echo "<script>
-            alert('Dữ liệu không hợp lệ!');
-            window.location.href = '../View/cart.php';
-        </script>";
-    }
-} else {
-    // Redirect back to the cart page if accessed incorrectly
-    header("Location: ../View/cart.php");
-
+        
+    $_SESSION['alert'] = [
+                'title' => 'Sửa sản phẩm thành công!',
+                'icon' => 'success'
+                ];
 }
+}
+header('Location: ../View/cart.php#start_view');
 ?>

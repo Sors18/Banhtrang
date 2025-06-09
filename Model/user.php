@@ -14,10 +14,10 @@ class data_account{
         return $run;
     }
     
-    public function insert_account($name,$email,$pass){
+    public function insert_account($name,$pass){
         global $conn;
-        $sql = "INSERT INTO user_inf(username,email,pass)
-                values('$name','$email','$pass')";
+        $sql = "INSERT INTO user_inf(username,pass)
+                values('$name','$pass')";
         $run = mysqli_query($conn, $sql);
         return $run;
     }

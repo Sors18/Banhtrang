@@ -1,7 +1,7 @@
 <?php
     include('navbar.php'); 
-    include("../Model/sanpham.php");
-    include("../Model/cart.php");
+    include_once("../Model/sanpham.php");
+    include_once("../Model/cart.php"); // Sửa thành include_once
     $cart = new cart();
     $product = new sanpham();
 
@@ -169,7 +169,7 @@
                             </div>
                         </div>
                     <?php endforeach; ?>
-                    <a href="#" class="btn btn-link mt-3">&larr; Tiếp tục mua hàng</a>
+                    <a href="banhtrang.php" class="btn btn-link mt-3">&larr; Tiếp tục mua hàng</a>
                 <?php else: ?>
                     <p class="text-center text-muted">Giỏ hàng của bạn đang trống.</p>
                 <?php endif; ?>
@@ -190,6 +190,19 @@
         </div>
     </div>    
 </body>
+<?php if (isset($_SESSION['alert'])): ?>
+        <?php $alert = $_SESSION['alert']; ?>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                Swal.fire({
+                    title: "<?= $alert['title'] ?>",
+                    icon: "<?= $alert['icon'] ?>"
+                });
+            });
+        </script>
+        <?php unset($_SESSION['alert']); ?>
+    <?php endif; ?>
 </html>
 <?php 
 if (isset($_POST['txtsub'])) {
@@ -199,4 +212,5 @@ if (isset($_POST['txtsub'])) {
         echo "<script>window.location.href = 'thanhtoan.php';</script>";
     }
 }
+
 ?>
